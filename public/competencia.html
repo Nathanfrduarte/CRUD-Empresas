@@ -1,0 +1,80 @@
+<!-- View principal -->
+<!doctype html>
+<!-- ESPECIFICANDO NOSSO MÓDULO ANGULAR listaCompetencias -->
+<html ng-app="listaCompetencias">
+    <head>
+        <!-- META -->
+        <meta charset="utf-8">
+        <!-- Otimizar a exibição em dispositivos móveis -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lista de Competências</title>
+        <!-- CSS -->
+        <!-- Carregando o bootstrap-->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <style>
+            html                    { overflow-y:scroll; }
+            body                    { padding-top:50px; }
+            #lista-competencias         { margin-bottom:30px; }
+            form button             { margin-top: 25px; }
+            form .form-group:first-child { padding-left: 0; }
+        </style> 
+        <!-- JavaScript -->
+        <!-- Carregando a biblioteca jQuery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <!-- Carregando a biblioteca AngularJS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="js/competenciaApp.js"></script>
+    </head>
+    <!-- DEFINE O CONTROLLER E BUSCA TODOS OS COLABORAÇÕES -->
+    <body ng-controller="competenciaController">
+        <div class="container">
+    
+            <!-- CABEÇALHO E TOTAL DE COLABORAÇÕES -->
+            <div class="jumbotron text-center">
+                <h1>Lista de Competências <span class="label label-info">{{ competencias.length }}</span></h1>
+            </div>
+    
+            <button type="submit" class="btn btn-success" onclick="window.location.href='projeto.html';">Voltar aos Projetos</button><br><br>
+
+            <!-- LISTA DE COLABORAÇÕES -->
+            <div id="lista-competencias">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Competência</th>
+                        <th>Projeto</th>                        
+                        <th>Opções</th>
+                    </tr>
+                    <!-- LOOP PARA CARREGAR TODOS OS COLABORAÇÕES EM $scope.contatos -->
+                    <tr ng-repeat="competencia in competencias">
+                        <td>{{ competencia.nome }}</td>
+                        <td>{{ competencia.projeto }}</td>                        
+                        <td>
+                            <button type="button" class="btn btn-warning" ng-click="editarCompetencia(competencia._id)">Editar</button>
+                            <button type="button" class="btn btn-danger" ng-click="deletarCompetencia(competencia._id)">Remover</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!-- FORMULÁRIO PARA CRIAÇÃO DE UM NOVO COMPETÊNCIA -->
+            <div id="competencia-form">
+                <hr>
+                <form>
+                    <div class="form-group col-md-3">
+                        <label for="nomeCompetencia">Competência</label>
+                        <input type="text" class="form-control" id="nomeCompetencia" placeholder="Leadership" ng-model="formCompetencia.nome">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="projetoCompetencia">Projeto</label>
+                        <input type="text" class="form-control" id="projetoCompetencia" placeholder="Avengers Initiative" ng-model="formCompetencia.projeto">
+                    </div>                    
+                    <div class="form-group col-md-3">
+                        <!-- createToDo() WILL CREATE NEW TODOS -->
+                        <button type="submit" class="btn btn-primary" ng-click="criarCompetencia()">Criar</button>
+                        <button type="submit" class="btn btn-info" ng-click="atualizarCompetencia()">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

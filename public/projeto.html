@@ -1,0 +1,97 @@
+<!-- View principal -->
+<!doctype html>
+<!-- ESPECIFICANDO NOSSO MÓDULO ANGULAR listaEmpresas -->
+<html ng-app="listaProjetos">
+    <head>
+        <!-- META -->
+        <meta charset="utf-8">
+        <!-- Otimizar a exibição em dispositivos móveis -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lista de Projetos</title>
+        <!-- CSS -->
+        <!-- Carregando o bootstrap-->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <style>
+            html                    { overflow-y:scroll; }
+            body                    { padding-top:50px; }
+            #lista-projetos         { margin-bottom:30px; }
+            form button             { margin-top: 25px; }
+            form .form-group:first-child { padding-left: 0; }
+        </style> 
+        <!-- JavaScript -->
+        <!-- Carregando a biblioteca jQuery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <!-- Carregando a biblioteca AngularJS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="js/projetoApp.js"></script>
+    </head>
+    <!-- DEFINE O CONTROLLER E BUSCA TODOS OS CONTATOS -->
+    <body ng-controller="projetoController">
+        <div class="container">
+    
+            <!-- CABEÇALHO E TOTAL DE CONTATOS -->
+            <div class="jumbotron text-center">
+                <h1>Lista de Projetos <span class="label label-info">{{ projetos.length }}</span></h1>
+            </div>
+            
+            <center>
+                <button type="submit" class="btn btn-success" onclick="window.location.href='index.html';">Empresa</button>&nbsp;
+                <button type="submit" class="btn btn-success" onclick="window.location.href='colaborador.html';">Colaborador/Avaliador</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-default" onclick="window.location.href='competencia.html';">Alocar Competências</button>&nbsp;
+                <button type="submit" class="btn btn-default" onclick="window.location.href='consultor.html';">Alocar Consultores</button><br><br>
+            </center>
+
+            <!-- LISTA DE CONTATOS -->
+            <div id="lista-projetos">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nome do Projeto</th>
+                        <th>Nome do Gerente</th>
+                        <th>Escritório Responsável</th>
+                        <th>Caracterísicas do Projeto</th>
+                        <th>Opções</th>
+                    </tr>
+                    <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
+                    <tr ng-repeat="projeto in projetos">
+                        <td>{{ projeto.nome }}</td>
+                        <td>{{ projeto.gerente }}</td>
+                        <td>{{ projeto.escritorio }}</td>
+                        <td>{{ projeto.caracteristica }}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" ng-click="editarProjeto(projeto._id)">Editar</button>
+                            <button type="button" class="btn btn-danger" ng-click="deletarProjeto(projeto._id)">Remover</button>                            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!-- FORMULÁRIO PARA CRIAÇÃO DE UM NOVO CONTATO -->
+            <div id="projeto-form">
+                <hr>
+                <form>
+                    <div class="form-group col-md-3">
+                        <label for="nomeProjeto">Nome do Projeto</label>
+                        <input type="text" class="form-control" id="nomeProjeto" placeholder="Avengers initiative" ng-model="formProjeto.nome">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="nomeGerente">Nome do Gerente</label>
+                        <input type="text" class="form-control" id="nomeGerente" placeholder="Nick Fury" ng-model="formProjeto.gerente">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="escritorioResponsavel">Escritório Responsável</label>
+                        <input type="text" class="form-control" id="escritorioResponsavel" placeholder="Shield" ng-model="formProjeto.escritorio">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="caracterisitcaProjeto">Caracterísicas</label>
+                        <input type="text" class="form-control" id="caracterisitcaProjeto" placeholder="The strongest heroes of the Earth" ng-model="formProjeto.caracteristica">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <!-- createToDo() WILL CREATE NEW TODOS -->
+                        <button type="submit" class="btn btn-primary" ng-click="criarProjeto()">Criar</button>
+                        <button type="submit" class="btn btn-info" ng-click="atualizarProjeto()">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

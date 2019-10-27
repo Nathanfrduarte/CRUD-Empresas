@@ -1,0 +1,95 @@
+<!-- View principal -->
+<!doctype html>
+<!-- ESPECIFICANDO NOSSO MÓDULO ANGULAR listaEmpresas -->
+<html ng-app="listaColaboradores">
+    <head>
+        <!-- META -->
+        <meta charset="utf-8">
+        <!-- Otimizar a exibição em dispositivos móveis -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lista de Empresas</title>
+        <!-- CSS -->
+        <!-- Carregando o bootstrap-->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <style>
+            html                    { overflow-y:scroll; }
+            body                    { padding-top:50px; }
+            #lista-colaboradores         { margin-bottom:30px; }
+            form button             { margin-top: 25px; }
+            form .form-group:first-child { padding-left: 0; }
+        </style> 
+        <!-- JavaScript -->
+        <!-- Carregando a biblioteca jQuery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <!-- Carregando a biblioteca AngularJS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="js/colaboradorApp.js"></script>
+    </head>
+    <!-- DEFINE O CONTROLLER E BUSCA TODOS OS CONTATOS -->
+    <body ng-controller="colaboradorController">
+        <div class="container">
+    
+            <!-- CABEÇALHO E TOTAL DE CONTATOS -->
+            <div class="jumbotron text-center">
+                <h1 style="font-size: 285%">Lista de Colaboradores/Avaliadores <span class="label label-info">{{ colaboradores.length }}</span></h1>
+            </div>
+            
+            <center>
+                <button type="submit" class="btn btn-success" onclick="window.location.href='projeto.html';">Projeto</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-success" onclick="window.location.href='index.html';">Empresa</button><br><br>
+            </center>
+
+            <!-- LISTA DE CONTATOS -->
+            <div id="lista-empresas">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nome do Colaborador/Avaliador</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Cargo Atual</th>
+                        <th>Opções</th>
+                    </tr>
+                    <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
+                    <tr ng-repeat="colaborador in colaboradores">
+                        <td>{{ colaborador.nome }}</td>
+                        <td>{{ colaborador.email }}</td>
+                        <td>{{ colaborador.telefone }}</td>
+                        <td>{{ colaborador.cargo }}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning" ng-click="editarColaborador(colaborador._id)">Editar</button>
+                            <button type="button" class="btn btn-danger" ng-click="deletarColaborador(colaborador._id)">Remover</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!-- FORMULÁRIO PARA CRIAÇÃO DE UM NOVO CONTATO -->
+            <div id="colaborador-form">
+                <hr>
+                <form>
+                    <div class="form-group col-md-3">
+                        <label for="nomeColaborador">Nome do Colaborador/Avaliador</label>
+                        <input type="text" class="form-control" id="nomeColaborador" placeholder="Tony Stark" ng-model="formColaborador.nome">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="emailColaborador">E-mail</label>
+                        <input type="text" class="form-control" id="emailColaborador" placeholder="stark@email.com" ng-model="formColaborador.email">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="telefoneColaborador">Telefone</label>
+                        <input type="text" class="form-control" id="telefoneColaborador" placeholder="(xx) xxxx-xxxx" ng-model="formColaborador.telefone">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="cargoColaborador">Cargo Atual</label>
+                        <input type="text" class="form-control" id="cargoColaborador" placeholder="Iron Man" ng-model="formColaborador.cargo">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <!-- createToDo() WILL CREATE NEW TODOS -->
+                        <button type="submit" class="btn btn-primary" ng-click="criarColaborador()">Criar</button>
+                        <button type="submit" class="btn btn-info" ng-click="atualizarColaborador()">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

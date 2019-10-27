@@ -1,0 +1,28 @@
+﻿<!-- Projeto Baseado no site -->
+http://thbastos.com/blog/criando-uma-aplicacao-em-nodejs-1-inicio
+
+
+<!-- Estrutura de pastas -->
+
+- models 		<!-- Nossos arquivos de definições de models no MongoDB -->
+----- Contato.js 	<!-- Define o model Contato utilizando a biblioteca mongoose -->
+- node_modules	    	<!-- Criada automaticamente -->
+- public 		<!-- Onde colocaremos os arquivos de front-end do AngularJS -->
+----- core.js 		<!-- Códigos do AngularJS -->
+----- index.html 	<!-- Nossa view principal -->
+- routes 		<!-- Nossos arquivos de definições de rotas -->
+----- index.js 		<!-- Todas as rotas da nossa aplicação ficarão no arquivo index.js -->
+- app.js 		<!-- Configurações do node -->
+- package.json 	    	<!-- Configurações npm para instalar nossas dependências/módulos -->
+- package-lock.json 	<!-- Criado automaticamente -->
+
+
+
+<!-- Solicitações da API (routes/index.js)-->
+
+Método HTTP	    URL	                        Descrição
+GET	        /api/contatos	            	Buscar todos os contatos
+POST	        /api/contatos	            	Criar um novo contato
+DELETE	        /api/contatos/:contato_id	Deletar um contato pelo ID
+GET	        /api/contatos/:contato_id	Buscar um contato pelo ID
+PUT	        /api/contatos/:contato_id	Atualizar um contato pelo ID

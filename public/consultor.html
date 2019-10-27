@@ -1,0 +1,80 @@
+<!-- View principal -->
+<!doctype html>
+<!-- ESPECIFICANDO NOSSO MÓDULO ANGULAR listaColaboracoes -->
+<html ng-app="listaConsultor">
+    <head>
+        <!-- META -->
+        <meta charset="utf-8">
+        <!-- Otimizar a exibição em dispositivos móveis -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lista de Consultores</title>
+        <!-- CSS -->
+        <!-- Carregando o bootstrap-->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <style>
+            html                    { overflow-y:scroll; }
+            body                    { padding-top:50px; }
+            #lista-consultores         { margin-bottom:30px; }
+            form button             { margin-top: 25px; }
+            form .form-group:first-child { padding-left: 0; }
+        </style> 
+        <!-- JavaScript -->
+        <!-- Carregando a biblioteca jQuery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <!-- Carregando a biblioteca AngularJS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="js/consultorApp.js"></script>
+    </head>
+    <!-- DEFINE O CONTROLLER E BUSCA TODOS OS COLABORAÇÕES -->
+    <body ng-controller="consultorController">
+        <div class="container">
+    
+            <!-- CABEÇALHO E TOTAL DE COLABORAÇÕES -->
+            <div class="jumbotron text-center">
+                <h1>Lista de Consultores <span class="label label-info">{{ consultores.length }}</span></h1>
+            </div>
+    
+            <button type="submit" class="btn btn-success" onclick="window.location.href='projeto.html';">Voltar aos Projetos</button><br><br>
+
+            <!-- LISTA DE COLABORAÇÕES -->
+            <div id="lista-consultores">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nome do Consultor</th>
+                        <th>Nome do Projeto</th>                        
+                        <th>Opções</th>
+                    </tr>
+                    <!-- LOOP PARA CARREGAR TODOS OS COLABORAÇÕES EM $scope.contatos -->
+                    <tr ng-repeat="consultor in consultores">
+                        <td>{{ consultor.nome }}</td>
+                        <td>{{ consultor.projeto }}</td>                        
+                        <td>
+                            <button type="button" class="btn btn-warning" ng-click="editarConsultor(consultor._id)">Editar</button>
+                            <button type="button" class="btn btn-danger" ng-click="deletarConsultor(consultor._id)">Remover</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!-- FORMULÁRIO PARA CRIAÇÃO DE UM NOVO CONTATO -->
+            <div id="consultor-form">
+                <hr>
+                <form>
+                    <div class="form-group col-md-3">
+                        <label for="consultorNome">Nome do Consultor</label>
+                        <input type="text" class="form-control" id="consultorNome" placeholder="Steve Rogers" ng-model="formConsultor.nome">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="consultorProjeto">Nome do Projeto</label>
+                        <input type="text" class="form-control" id="consultorProjeto" placeholder="Avengers Initiative" ng-model="formConsultor.projeto">
+                    </div>                    
+                    <div class="form-group col-md-3">
+                        <!-- createToDo() WILL CREATE NEW TODOS -->
+                        <button type="submit" class="btn btn-primary" ng-click="criarConsultor()">Criar</button>
+                        <button type="submit" class="btn btn-info" ng-click="atualizarConsultor()">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
