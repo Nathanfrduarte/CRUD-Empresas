@@ -12,6 +12,8 @@
     <!-- CSS -->
     <!-- Carregando o bootstrap-->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/ libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/9504a249a5.js" crossorigin="anonymous"></script>
     <style>
         html {
             overflow-y: scroll;
@@ -56,31 +58,35 @@
             </center> -->
 
         <!-- LISTA DE CONTATOS -->
-        <div id="lista-empresas">
-            <table class="table table-striped">
-                <tr>
-                    <th>Nome da empresa</th>
-                    <th>CNPJ</th>
-                    <th>Responsável</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Opções</th>
-                </tr>
-                <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
-                <tr ng-repeat="empresa in empresas">
-                    <td>{{ empresa.nome }}</td>
-                    <td>{{ empresa.cnpj }}</td>
-                    <td>{{ empresa.responsavel }}</td>
-                    <td>{{ empresa.email }}</td>
-                    <td>{{ empresa.telefone }}</td>
-                    <td>
-                        <!-- Opções-->
-                        <button type="button" class="btn btn-primary"
-                            ng-click="editarEmpresa(empresa._id)">Editar</button>
-                        <button type="button" class="btn btn-danger"
-                            ng-click="deletarEmpresa(empresa._id)">Remover</button>
-                    </td>
-                </tr>
+        <div id="lista-empresas" class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="active">
+                        <th>Nome da empresa</th>
+                        <th>CNPJ</th>
+                        <th>Responsável</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
+                    <tr ng-repeat="empresa in empresas">
+                        <td>{{ empresa.nome }}</td>
+                        <td>{{ empresa.cnpj }}</td>
+                        <td>{{ empresa.responsavel }}</td>
+                        <td>{{ empresa.email }}</td>
+                        <td>{{ empresa.telefone }}</td>
+                        <td>
+                            <!-- Opções-->
+                            <button type="button" class="btn btn-primary fa fa-pencil-square-o"
+                                ng-click="editarEmpresa(empresa._id)"></button>
+                            <button type="button" class="btn btn-danger fa fa-trash-o"
+                                ng-click="deletarEmpresa(empresa._id)"></button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
@@ -149,13 +155,13 @@
 
                 <!-- Botões de Criar e Atualizar -->
                 <div class="row">
-                    <div class="form-group col-md-1 text-left">
-                        <button type="button" class="btn btn-secondary" ng-click="limpar()">Limpar</button>                        
+                    <div class="form-group col-md-2 text-left">
+                        <button type="reset" class="btn btn-secondary"><span class="fa fa-undo"></span> Limpar</button>
                     </div>
-                    <div class="form-group col-md-12 text-right">
+                    <div class="form-group col-md-10 text-right">
                         <!-- createToDo() WILL CREATE NEW TODOS -->
-                        <button type="submit" class="btn btn-success" ng-click="criarEmpresa()">Criar</button>
-                        <button type="submit" class="btn btn-info" ng-click="atualizarEmpresa()">Atualizar</button>
+                        <button type="submit" class="btn btn-success" ng-click="criarEmpresa()"><span class="fa fa-check"></span> Criar</button>
+                        <button type="submit" class="btn btn-info" ng-click="atualizarEmpresa()"><span class="fa fa-refresh"></span> Atualizar</button>
                     </div>
                 </div>
             </form>

@@ -1,5 +1,6 @@
 ﻿<!-- Projeto Baseado no site -->
 http://thbastos.com/blog/criando-uma-aplicacao-em-nodejs-1-inicio
+goxago@dmail1.net
 
 
 <!-- Estrutura de pastas -->
