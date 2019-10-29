@@ -4,13 +4,11 @@
 <html ng-app="listaEmpresas">
 
 <head>
-    <!-- META -->
     <meta charset="utf-8">
     <!-- Otimizar a exibição em dispositivos móveis -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lista de Empresas</title>
-    <!-- CSS -->
-    <!-- Carregando o bootstrap-->
+    <!-- Bootstrap-->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/ libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/9504a249a5.js" crossorigin="anonymous"></script>
@@ -36,14 +34,13 @@
         } */
     </style>
     <!-- JavaScript -->
-    <!-- Carregando a biblioteca jQuery -->
+    <!-- Biblioteca jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <!-- Carregando a biblioteca AngularJS -->
+    <!-- Biblioteca AngularJS -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <script src="js/angularApp.js"></script>
 </head>
 <!-- DEFINE O CONTROLLER E BUSCA TODOS OS CONTATOS -->
-
 <body ng-controller="mainController">
     <div class="container">
 
@@ -79,7 +76,7 @@
                         <td>{{ empresa.email }}</td>
                         <td>{{ empresa.telefone }}</td>
                         <td>
-                            <!-- Opções-->
+                            <!-- Botões com Opções-->
                             <button type="button" class="btn btn-primary fa fa-pencil-square-o"
                                 ng-click="editarEmpresa(empresa._id)"></button>
                             <button type="button" class="btn btn-danger fa fa-trash-o"
@@ -96,6 +93,7 @@
             <h2 class="text-center">Cadastro</h2>
             <hr>
             <form>
+                <!-- 1° linha de campos -->
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label for="nomeEmpresa">Nome da Empresa</label>
@@ -128,6 +126,7 @@
                     </div>
 
                 </div>
+                <!-- 2° linha de campos -->
                 <div class="row">
                     <div class="form-group col-md-5">
                         <label for="enderecoEmpresa">Endereço</label>
@@ -161,7 +160,6 @@
                         <button type="reset" class="btn btn-secondary"><span class="fa fa-undo"></span> Limpar</button>
                     </div>
                     <div class="form-group col-md-10 text-right">
-                        <!-- createToDo() WILL CREATE NEW TODOS -->
                         <button type="submit" class="btn btn-success" ng-click="criarEmpresa()"><span class="fa fa-check"></span> Criar</button>
                         <button type="submit" class="btn btn-info" ng-click="atualizarEmpresa()"><span class="fa fa-refresh"></span> Atualizar</button>
                     </div>
