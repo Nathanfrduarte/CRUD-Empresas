@@ -56,7 +56,7 @@
 
         <!-- LISTA DE CONTATOS -->
         <div id="lista-empresas" class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-dark table-hover">
                 <thead>
                     <tr class="active">
                         <th>Nome da empresa</th>
@@ -64,6 +64,7 @@
                         <th>Responsável</th>
                         <th>E-mail</th>
                         <th>Telefone</th>
+                        <th>Conta Criada</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -75,10 +76,11 @@
                         <td>{{ empresa.responsavel }}</td>
                         <td>{{ empresa.email }}</td>
                         <td>{{ empresa.telefone }}</td>
+                        <td>{{ empresa.contaCriada }}</td>
                         <td>
                             <!-- Botões com Opções-->
                             <button type="button" class="btn btn-primary fa fa-pencil-square-o"
-                                ng-click="editarEmpresa(empresa._id)"></button>
+                                ng-click="editarEmpresa(empresa._id)"></button> 
                             <button type="button" class="btn btn-danger fa fa-trash-o"
                                 ng-click="deletarEmpresa(empresa._id)"></button>
                         </td>
@@ -107,16 +109,16 @@
                             ng-model="formEmpresa.cnpj">
                     </div>
 
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-3">
                         <label for="responsavelEmpresa">Responsável</label>
                         <input type="text" class="form-control" id="responsavelEmpresa" placeholder="Tony Stark"
                             ng-model="formEmpresa.responsavel">
                     </div>
 
-                    <div class="form-group col-md-3">
-                        <label for="emailEmpresa">E-mail</label>
-                        <input type="text" class="form-control" id="emailEmpresa" placeholder="email@email.com"
-                            ng-model="formEmpresa.email">
+                    <div class="form-group col-md-2">
+                        <label for="cpfEmpresa">CPF</label>
+                        <input type="text" class="form-control" id="cpfEmpresa" placeholder="xxx.xxx.xxx-xx"
+                            ng-model="formEmpresa.cpf">
                     </div>
 
                     <div class="form-group col-md-2">
@@ -128,13 +130,25 @@
                 </div>
                 <!-- 2° linha de campos -->
                 <div class="row">
+                    <div class="form-group col-md-3">
+                                <label for="emailEmpresa">E-mail</label>
+                                <input type="text" class="form-control" id="emailEmpresa" placeholder="email@email.com"
+                                    ng-model="formEmpresa.email">
+                    </div>
+
                     <div class="form-group col-md-5">
                         <label for="enderecoEmpresa">Endereço</label>
                         <input type="text" class="form-control" id="enderecoEmpresa" placeholder="Avenue, 7, NY, EUA"
                             ng-model="formEmpresa.endereco">
                     </div>
 
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-2">
+                            <label for="contaCriadaEmpresa">Conta Criada</label>
+                            <input type="text" class="form-control" id="contaCriadaEmpresa" placeholder="Sim ou Não"
+                                ng-model="formEmpresa.contaCriada">
+                    </div>
+
+                    <!-- <div class="form-group col-md-4">
                         <label for="bancoEmpresa">Banco</label>
                         <input type="text" class="form-control" id="bancoEmpresa" placeholder="Wells Fargo"
                             ng-model="formEmpresa.banco">
@@ -150,17 +164,19 @@
                         <label for="contaEmpresa">Conta</label>
                         <input type="text" class="form-control" id="contaEmpresa" placeholder="xxxxxxxx-x"
                             ng-model="formEmpresa.conta">
-                    </div>
+                    </div> -->
 
                 </div>
 
                 <!-- Botões de Criar e Atualizar -->
                 <div class="row">
-                    <div class="form-group col-md-2 text-left">
+                    <div class="form-group col-md-4 text-left">
                         <button type="reset" class="btn btn-secondary"><span class="fa fa-undo"></span> Limpar</button>
+                        <a href="https://www.mercadopago.com.br/registration-mp?mode=mp&utm_source=ParceiroLI&utm_medium=parceria&utm_campaign=Loja_Integrada" target="_blank" class="btn btn-primary" style="margin-top: 25px;"><span class="fa fa-star"></span> Criar Conta</a>
+                        <!-- <button type="button" class="btn btn-primary" ng-click="gerarConta()"><span class="fa fa-star"></span> Criar Conta</button>    -->
                     </div>
-                    <div class="form-group col-md-10 text-right">
-                        <button type="submit" class="btn btn-success" ng-click="criarEmpresa()"><span class="fa fa-check"></span> Criar</button>
+                    <div class="form-group col-md-8 text-right">
+                        <button type="submit" class="btn btn-success" ng-click="criarEmpresa()"><span class="fa fa-check"></span> Salvar</button>
                         <button type="submit" class="btn btn-info" ng-click="atualizarEmpresa()"><span class="fa fa-refresh"></span> Atualizar</button>
                     </div>
                 </div>

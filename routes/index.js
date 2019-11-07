@@ -29,9 +29,11 @@ router.post('/api/empresas', function(req, res) {
         email : req.body.email,
         telefone : req.body.telefone,
         endereco : req.body.endereco,
-        banco : req.body.banco,
-        agencia : req.body.agencia,
-        conta : req.body.conta,
+        cpf : req.body.cpf,
+        contaCriada : req.body.contaCriada,
+        // banco : req.body.banco,
+        // agencia : req.body.agencia,
+        // conta : req.body.conta,
         done : false
     }, 
     function(err, empresa) {

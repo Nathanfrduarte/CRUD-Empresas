@@ -6,12 +6,15 @@ var EmpresaSchema = new mongoose.Schema({
   nome: String,
   cnpj: String,
   responsavel: String,
+  cpf: String,
   email: String,
   telefone: String,
   endereco: String,
-  banco: String,
-  conta: String,
-  agencia: String
+  contaCriada: String
+
+  // banco: String,
+  // conta: String,
+  // agencia: String
 });
 
 //Define o model Contato
