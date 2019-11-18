@@ -46,9 +46,9 @@
 
         <!-- CABEÇALHO E TOTAL DE CONTATOS -->
         <div class="jumbotron text-center">
-            <h1>Lista de Empresas <span class="label label-info">{{ empresas.length }}</span></h1>
+            <h1>Gestão de Empresas <span class="label label-info">{{ empresas.length }}</span></h1>
         </div>
-
+        <hr> 
         <!-- <center>
                 <button type="submit" class="btn btn-success" onclick="window.location.href='projeto.html';">Projeto</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="submit" class="btn btn-success" onclick="window.location.href='colaborador.html';">Colaborador/Avaliador</button><br><br>                
@@ -64,8 +64,8 @@
                         <th>Responsável</th>
                         <th>E-mail</th>
                         <th>Telefone</th>
-                        <th>Conta Criada</th>
-                        <th>Opções</th>
+                        <th style="text-align: center;">Conta Criada</th>
+                        <th style="text-align: center;">Opções</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,11 +76,14 @@
                         <td>{{ empresa.responsavel }}</td>
                         <td>{{ empresa.email }}</td>
                         <td>{{ empresa.telefone }}</td>
-                        <td>{{ empresa.contaCriada }}</td>
-                        <td>
+                        <td style="text-align: center;">{{ empresa.contaCriada }}</td>
+                        <td style="text-align: center;">
                             <!-- Botões com Opções-->
+                            <a href="https://www.mercadopago.com.br/registration-mp?mode=mp&utm_source=ParceiroLI&utm_medium=parceria&utm_campaign=Loja_Integrada" target="_blank" class="btn btn-warning" style="height: 28.4px;"><span class="fa fa-pie-chart"></span></a>
+                            <!-- <button type="button" class="btn btn-warning fa fa-line-chart"
+                                ng-click="editarEmpresa(empresa._id)"></button> -->
                             <button type="button" class="btn btn-primary fa fa-pencil-square-o"
-                                ng-click="editarEmpresa(empresa._id)"></button> 
+                                ng-click="editarEmpresa(empresa._id)"></button>
                             <button type="button" class="btn btn-danger fa fa-trash-o"
                                 ng-click="deletarEmpresa(empresa._id)"></button>
                         </td>
@@ -92,8 +95,12 @@
         <!-- FORMULÁRIO PARA CRIAÇÃO DE UM NOVO CONTATO -->
         <div id="empresa-form">
             <hr>
-            <h2 class="text-center">Cadastro</h2>
-            <hr>
+            <!--<h2 class="text-center">Cadastro</h2>
+            <hr> -->
+            <div class="jumbotron text-center" style="padding: 7px;">
+                <h2>Cadastro</h2>
+            </div>
+            <hr> 
             <form>
                 <!-- 1° linha de campos -->
                 <div class="row">
@@ -146,7 +153,7 @@
                             <label for="contaCriadaEmpresa">Conta Criada</label>
                             <input type="text" class="form-control" id="contaCriadaEmpresa" placeholder="Sim ou Não"
                                 ng-model="formEmpresa.contaCriada">
-                    </div>
+                    </div>                                        
 
                     <!-- <div class="form-group col-md-4">
                         <label for="bancoEmpresa">Banco</label>
