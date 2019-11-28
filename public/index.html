@@ -59,9 +59,9 @@
             <table class="table table-dark table-hover">
                 <thead>
                     <tr class="active">
-                        <th>Nome da empresa</th>
-                        <th>CNPJ</th>
+                        <th>Nome da empresa</th>                        
                         <th>Responsável</th>
+                        <th>CPF</th>
                         <th>E-mail</th>
                         <th>Telefone</th>
                         <th style="text-align: center;">Conta Criada</th>
@@ -72,8 +72,8 @@
                     <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
                     <tr ng-repeat="empresa in empresas">
                         <td>{{ empresa.nome }}</td>
-                        <td>{{ empresa.cnpj }}</td>
                         <td>{{ empresa.responsavel }}</td>
+                        <td>{{ empresa.cpf}}</td>
                         <td>{{ empresa.email }}</td>
                         <td>{{ empresa.telefone }}</td>
                         <td style="text-align: center;">{{ empresa.contaCriada }}</td>
