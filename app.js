@@ -23,10 +23,10 @@ var methodOverride = require('method-override');
 mongoose.connect('mongodb://userprojetoweb:webd123@ds121834.mlab.com:21834/projetowebd', { useNewUrlParser: true });
 // Requisição ao arquivo que cria nosso model Contato
 require('./models/Empresa');
-// require('./models/Projeto');
-// require('./models/Colaborador');
-// require('./models/Competencia');
-// require('./models/Consultor');
+require('./models/Projeto');
+require('./models/Colaborador');
+require('./models/Competencia');
+require('./models/Consultor');
 
 // DEFININDO A APLICAÇÃO ==============================
 // definindo local de arquivos públicos
@@ -44,17 +44,17 @@ app.use(methodOverride());
 // ROTAS ===============================================
 // Incluindo nossas rotas definidas no arquivo routes/index.js
 var index = require('./routes/index');
-// var projetos = require('./routes/projeto');
-// var colaboradores = require('./routes/colaborador');
-// var competencias = require('./routes/competencia');
-// var consultores = require('./routes/consultor');
+var projetos = require('./routes/projeto');
+var colaboradores = require('./routes/colaborador');
+var competencias = require('./routes/competencia');
+var consultores = require('./routes/consultor');
 
 // Rotas na aplicação
 app.use('/', index);
-// app.use('/', projetos);
-// app.use('/', colaboradores);
-// app.use('/', competencias);
-// app.use('/', consultores);
+app.use('/', projetos);
+app.use('/', colaboradores);
+app.use('/', competencias);
+app.use('/', consultores);
 
 // LISTEN (iniciando nossa aplicação em node) ==========
 // Define a porta 8080 onde será executada nossa aplicação local ou a porta do Heroku caso hospedado
